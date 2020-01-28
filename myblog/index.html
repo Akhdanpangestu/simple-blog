@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="true">
+	<title>Halaman Utama</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){  // $(document).ready shorthand
+			$('.monster').fadeIn('slow');
+		});
+
+		$(document).ready(function() {
+			$(function(){
+				var i = 0;
+
+				$(window).on("resize",function(){
+					var windowsize = $(this).width();
+					if (windowsize<=657 && i==0) {
+						i=1;
+					}else if(windowsize>657 && i==1){
+						location.reload();
+						i=0;
+					}
+				});
+			});
+
+			$( ".cross" ).hide();
+			$( ".menu" ).hide();
+			$( ".hamburger" ).click(function() {
+				$( "#center,#right" ).slideToggle( "slow", function() {
+					$( ".hamburger" ).hide();
+					$( ".cross" ).show();
+				});
+			});
+
+			$( ".cross" ).click(function() {
+				$( "#center,#right" ).slideToggle( "slow", function() {
+					$( ".cross" ).hide();
+					$( ".hamburger" ).show();
+				});
+			});
+
+			/* Every time the window is scrolled ... */
+			$(window).scroll( function(){
+
+				/* Check the location of each desired element */
+				$('.services,.popular, .members').each( function(i){
+
+					var bottom_of_object = $(this).position().top + $(this).outerHeight();
+					var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+					/* If the object is completely visible in the window, fade it it */
+					if( bottom_of_window > bottom_of_object ){
+
+						$(this).animate({'opacity':'1'},1000);
+
+					}
+
+				}); 
+
+			});
+
+			$("#myCarousel").on("slide.bs.carousel", function(e) {
+				var $e = $(e.relatedTarget);
+				var idx = $e.index();
+				var itemsPerSlide = 3;
+				var totalItems = $(".carousel-item").length;
+
+				if (idx >= totalItems - (itemsPerSlide - 1)) {
+					var it = itemsPerSlide - (totalItems - idx);
+					for (var i = 0; i < it; i++) {
+        // append slides to end
+        if (e.direction == "left") {
+        	$(".carousel-item")
+        	.eq(i)
+        	.appendTo(".carousel-inner");
+        } else {
+        	$(".carousel-item")
+        	.eq(0)
+        	.appendTo($(this).find(".carousel-inner"));
+        }
+    }
+}
+});
+
+
+
+		});
+	</script>
+
+</head>
+<body>
+
+	<img src="img/backgroudnya.jpg" class="image">
+
+	<nav>
+		<div class="container">
+			<button class="hamburger">&#9776;</button>
+			<button class="cross">&#735;</button>
+			<ul>
+				<li id="left"><img src="img/logo.png" style="width: 70%"></li>
+				<li id="center"><a href="index.html">HOME</a></li>
+				<li id="right">
+					<form action="about.html">
+						<a href="about.html">About Me</a>
+					</form>
+				</li>
+				<li id="right">
+					<form action="myblog.html">
+						<a href="myblog.html">MyBlog</a>
+					</form>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+	<div class="tulisanbg">
+		<center>
+			<p>Akhdan's</p>
+		</center>
+	</div>
+
+	<section>
+		<div class="sub1">
+			<center>
+				<p>Beberapa informasi mengenai Blog saya</p>
+				<p id="tebal">Bidang yang saya jadikan blog</p>
+			</center>
+		</div>
+
+		<div class="services">
+			<div class="kiri">
+				<div class="card">
+					<div class="container">
+						<center><h4><b>Teknologi</b></h4></center>
+						<p>Beberapa artikel terkait lomba, study case, dan ilmu yang pernah saya dapat terkait teknologi</p>
+
+						<img src="img/s1.png" style="width:100%;">
+					</div>
+				</div>
+			</div>
+
+			<div class="tengah">
+				<div class="card">
+					<div class="container">
+						<center><h4><b>Makanan</b></h4></center>
+						<p>Beberapa karya tulis tentang resep dan artikel food hunter</p>
+
+						<img src="img/s2.png" style="width:100%;">
+					</div>
+				</div>
+			</div>
+
+			<div class="kanan">
+				<div class="card">
+					<div class="container">
+						<center><h4><b>My Diary</b></h4></center>
+						<p>Beberapa tulisan tentang keseharian saya yang tentunya sangat menarik untuk diikuti </p>
+
+						<img src="img/s3.png" style="width:100%;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="sub1">
+			<center>
+				<p>Anda ingin sebuah pencerahan ?</p>
+				<p id="tebal">Motivasi untuk Anda Semua</p>
+			</center>
+		</div>
+
+		<div class="popular">
+			<div class="pop1">
+				<img src="img/edit1.png" style="width: 100%;">
+			</div>
+
+			<div class="pop2">
+				<img src="img/edit2.png" style="width: 100%;">
+			</div>
+
+			<div class="pop3">
+				<img src="img/edit3.png" style="width: 100%;">
+			</div>
+		</div>
+
+	</section>
+
+	<section>
+		<div class="sub1">
+			<center>
+				<p>Pilih artikel yang Anda inginkan</p>
+				<p id="tebal">Selamat Membaca</p>
+			</center>
+		</div>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner row w-100 mx-auto">
+				<div class="carousel-item col-md-4 active">
+					<div class="card">
+						<img
+						class="card-img-top img-fluid"
+						src="img/pendidikan.png"
+						alt="Card image cap"
+						/>
+						<div class="card-body">
+							<h4 class="card-title">Perjalanan Pendidikan</h4>
+							<p class="card-text">
+								Halo perkenalkan Nama Saya Akhdan Pangestuaji. Saya sekarang berumur 18 tahun...
+							</p>
+							<form action="iotblog.html">
+								<button type="submit" class="btn">Lanjutkan Baca</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item col-md-4">
+					<div class="card">
+						<img
+						class="card-img-top img-fluid"
+						src="img/iot.png"
+						alt="Card image cap"
+						/>
+						<div class="card-body">
+							<h4 class="card-title">IoT Competition</h4>
+							<p class="card-text">
+								IoT competition adalah sebuah kompetisi dalam menuangkan ide dalam sebuah aplikasi berbasis IoT...
+							</p>
+							<form action="iotblog.html">
+								<button type="submit" class="btn">Lanjutkan Baca</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item col-md-4">
+					<div class="card">
+						<img
+						class="card-img-top img-fluid"
+						src="img/mendoan.jpg"
+						alt="Card image cap"
+						/>
+						<div class="card-body">
+							<h4 class="card-title">Mendoan Banyumas</h4>
+							<p class="card-text">
+								Sudahkah Anda mendengar kata Mendoan ? Apa itu Mendoan ? Ternyata mendoan adalah...
+							</p>
+							<form action="iotblog.html">
+								<button type="submit" class="btn">Lanjutkan Baca</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item col-md-4">
+					<div class="card">
+						<img
+						class="card-img-top img-fluid"
+						src="img/about.jpg"
+						alt="Card image cap"
+						/>
+						<div class="card-body">
+							<h4 class="card-title">Diriku di 1 tahun lalu</h4>
+							<p class="card-text">
+								Apa yang sudah Anda bisa lakukan ? Apakah Anda sudah berpikir menjadi orang besar ? Mungkin kita sama, mungkin juga berbeda...
+							</p>
+							<form action="iotblog.html">
+								<button type="submit" class="btn">Lanjutkan Baca</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a
+			class="carousel-control-prev"
+			href="#myCarousel"
+			role="button"
+			data-slide="prev"
+			>
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a
+		class="carousel-control-next"
+		href="#myCarousel"
+		role="button"
+		data-slide="next"
+		>
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+</div>
+
+
+</section>
+
+<section>
+	<div class="bginform">
+
+		<div class="information">
+			<div class="kiriinform">
+				<h4><b>About Agency</b></h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore </p>
+			</div>
+
+			<div class="kananinform">
+				<h4><b>Navigation Links</b>
+				</h4>
+				<p>MyBlog</p>
+				<p>About Me</p>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="foot">
+		<p>Hallo | This website made by Akhdan</p>
+	</div>
+</footer>
+
+</body>
+</html>
